@@ -10,7 +10,7 @@ public class Main {
        driver.get("https://ebay.com/");
 
        //Write something in searchbox
-        driver.findElement(By.xpath("//*[@id=\"gh-ac\"]")).sendKeys("Smart Phone");
+        driver.findElement(By.xpath("//*[@id=\"gh-ac\"]")).sendKeys("Laptop");
 
         //Click the search button
         driver.findElement(By.xpath("//*[@id=\"gh-search-btn\"]")).click();
