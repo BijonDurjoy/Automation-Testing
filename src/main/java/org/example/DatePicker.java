@@ -5,31 +5,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DatePicker {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new FirefoxDriver();
         driver.get("https://jqueryui.com/datepicker/");
-
         driver.switchTo().frame(0);
-
-        // Open date picker
         driver.findElement(By.id("datepicker")).click();
 
-        String targetMonth = "April";
-        String targetYear = "2020";
-        //String targetDate = "7";
+        Thread.sleep(2000);
 
-        while (true) {
-            String month = driver.findElement(By.className("ui-datepicker-month")).getText();
-            String year = driver.findElement(By.className("ui-datepicker-year")).getText();
+        while (true){
+            String month = driver.findElement(By.xpath("//span[@class='ui-datepicker-month']")).getText();
+            String year =  driver.findElement(By.xpath("//span[@class='ui-datepicker-year']")).getText();
 
-            if (month.equals(targetMonth) && year.equals(targetYear)) {
-                //driver.findElement(By.xpath("//a[text()='" + targetDate + "']")).click();
+            if(month.equals("April") && year.equals("2020")){
                 driver.findElement(By.xpath("//a[normalize-space()='7']")).click();
                 break;
-            } else {
-                // Click previous button
-                driver.findElement(By.xpath("//span[contains(@class,'ui-icon-circle-triangle-w')]")).click();
+            }
+            else{
+                driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-circle-triangle-w']")).click();
             }
         }
     }
